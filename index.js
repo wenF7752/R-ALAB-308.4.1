@@ -84,3 +84,23 @@ part3Array.push(obj2);
 console.log(part3Array);
 
 console.log('==================Part 5==================');
+// As a final task, transform the final set of data back into CSV format.
+
+let part5String = '';
+//Add the heading row
+part5String += headingRow.join(',') + '\n';
+// console.log(part5String);
+//Add the rows
+for (let array in part3Array) {
+  //loop through the array of objects
+  let obj = part3Array[array]; //get the object
+  //console.log(obj);
+  let row = []; //create a row
+  for (let j = 0; j < headingRow.length; j++) {
+    //loop through the heading row because the keys are the same
+    row.push(obj[headingRow[j].toLowerCase()]); //add the value to the row using the key from the heading row
+  }
+  part5String += row.join(',') + '\n'; //add the row to the string with a newline character at the end
+}
+
+console.log(part5String);
